@@ -1,0 +1,130 @@
+# ---------------------------------------------------
+#  **************  VR Transient Tests Quick Setting Tool **************
+# ---------------------------------------------------
+# This test is for Intel VRTT PDT software. 
+# This script can make the settings by entering the number and click the botton instead of setting things manually. 
+# ---------------------------------------------------
+# 此脚本用于Intel VRTT PDT 软件。方便快速设置Transient负载下的测试条件。
+#-----------------------------------------------------
+
+[FileName] = C:\Temp\xxxxx.txt 
+#[iccmax] = td.iccmax
+#PrintFileName [FileName]
+#PrintF This is the output file: [iccmax]
+#Prompt [iccmax]
+#InputBox [name] What is your name?
+#0 Read Register 0x8012
+#0 Write IccMax 5
+
+
+start:
+InputBox [tz]  Inuput Test number:EXAMPLE 1.1==>>t1.1,  0==>> end test. 
+
+if [tz] == 0
+goto endd
+elseif [tz] == 1.1
+goto t1_1
+elseif [tz] == 1.2
+goto t1_2
+elseif [tz] == 2
+goto t2
+elseif [tz]==3
+goto t3
+elseif [tz]==4
+goto t4
+elseif [tz]==5
+goto t5
+elseif [tz]==6
+goto t6
+elseif [tz]==7
+goto t7
+else
+goto notsupport
+endif
+
+t1_1:
+0 Write TestMode SVDC
+0 Write VMax 1.82 Fast
+0 Write IccMax 160
+0 Write IccMin 35
+0 Write VRail VCCIN
+0 Write RiseTime 174
+goto start
+
+t1_2:
+0 Write TestMode SVDC
+0 Write VMax 1.82 Fast
+0 Write IccMax 130
+0 Write IccMin 5
+0 Write VRail VCCIN
+0 Write RiseTime 174
+goto start
+
+t2:
+0 Write VRail VCCIN
+0 Write TestMode SVDC
+
+0 Write VMax 1.8 Fast
+0 Write IccMax 77
+0 Write IccMin 67
+0 Write RiseTime 14
+goto start
+
+t3:
+0 Write VRail VCCIN
+0 Write TestMode SVDC
+
+0 Write VMax 1.8 Fast
+0 Write IccMax 160
+0 Write IccMin 35
+0 Write RiseTime 173
+goto start
+
+t4:
+0 Write VRail VCCIN
+0 Write TestMode SVDC
+
+0 Write VMax 1.8 Fast
+0 Write IccMax 40
+0 Write IccMin 25
+0 Write RiseTime 21
+goto start
+
+t5:
+0 Write VRail VCCIN
+0 Write TestMode SVDC
+
+0 Write VMax 1.8 Fast
+0 Write IccMax 80
+0 Write IccMin 60
+0 Write RiseTime 27.7
+goto start
+
+t6:
+0 Write VRail VCCIN
+0 Write TestMode SVDC
+
+0 Write VMax 1.8 Fast
+0 Write IccMax 160
+0 Write IccMin 80
+0 Write RiseTime 111
+goto start
+
+t7:
+0 Write VRail VCCIN
+0 Write TestMode SVDC
+
+0 Write VMax 1.8 Fast
+0 Write IccMax 160
+0 Write IccMin 120
+0 Write RiseTime 55.48
+goto start
+
+notsupport:
+prompt NOT SUPPORT!!!
+
+goto start
+
+endd: 
+prompt TESTS END!!!! THANK  YOU!!!!
+stop
